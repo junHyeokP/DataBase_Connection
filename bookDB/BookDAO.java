@@ -33,6 +33,7 @@ public class BookDAO {
 				oracle.pstmt.setInt(0, bookID); // ? 부분에 매개변수 넣기
 				
 				int result = oracle.pstmt.executeUpdate();
+				// 여기서 반환된 result값은 영향을 받은 행의 갯수를 출력했다는 메세지와 함께 출력할 것임, 아닐 시 -1반환
 				return result > 0? result : -1;
 				
 			} catch (SQLException e) {
