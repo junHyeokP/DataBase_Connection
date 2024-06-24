@@ -15,10 +15,10 @@ DROP sequence book_seq; -- delete
  
 -- C                         
 -- insert into book (bookID, name, author, publisher, price)
--- values (book_seq.nextval, '이름', '저자', '출판사', 가격숫자);
+-- values (bookID, '이름', '저자', '출판사', 가격숫자);
 
 -- R
--- select * form book;
+select * from book;
 -- select * from book where bookID = 'bookID숫자'; 
 
 -- U
