@@ -26,14 +26,17 @@ public class BookService {
 		return bookList;
 	}
 	
-	public boolean edit(Book book, int oldPrice) {
+	public boolean edit(Book book, int newPrice) {
+		Book bookInfo = bookDAO.selectBook(book.getBookID());
+		
 		if (book == null) return false;
-		if (oldPrice == 0) return false;
+		if (newPrice == bookInfo.getPrice()) return false;
 		
 		int result = 0;
-		Book bookInfo = bookDAO.selectBook(book.getBookID());
-		if(oldPrice == bookInfo.getPrice()) {
-			result = bookDAO.updateBook(book);
+		
+		if(newPrice != bookInfo.getPrice()) {
+			bookInfo.setPrice(newPrice);
+			result = bookDAO.updateBook(bookInfo);
 		}
 		
 		return result == 1 ? true : false;
